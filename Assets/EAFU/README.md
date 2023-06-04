@@ -12,6 +12,10 @@ EAFU is designed to be customizable, enabling developers to easily create specif
 
 2. Implement your custom APIs inheriting from `EAFUApi` class and specify your Azure Function endpoints in the `ApiEndpoints` object. The `ApiEndpoints` object holds the URIs for each CRUD operation (GET, POST, PUT, DELETE) for a specific API.
 
+3. Initialize `ApiService.BaseUrl` to your Azure Function App's base URL.
+
+4. Use your custom APIs to communicate with Azure Functions. EAFU will handle the request and response parsing, errors, and loading states.
+
 ```csharp
 [Serializable]
 public class GameApi : EAFUApi
@@ -27,9 +31,6 @@ public class GameApi : EAFUApi
     public void GetLeaderboard(Action<List<Player>> GetLeaderboardsAction) => Get(GetLeaderboardsAction);
 }
 ```
-3. Initialize `ApiService.BaseUrl` to your Azure Function App's base URL.
-
-4. Use your custom APIs to communicate with Azure Functions. EAFU will handle the request and response parsing, errors, and loading states.
 
 ## Structure
 EAFU consists of the following main components:
