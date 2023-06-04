@@ -1,7 +1,5 @@
 # Easy Azure Functions for Unity (EAFU)
 
-![Image Alt Text](..\EAFU\Utility\EAFUImage.PNG)
-
 ## About
 
 Easy Azure Functions for Unity (EAFU) is a lightweight library designed to make it easier for Unity developers to interface with Azure Functions. It provides base classes and a service class to simplify sending HTTP requests to Azure Functions.
