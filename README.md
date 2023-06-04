@@ -1,6 +1,6 @@
 # Easy Azure Functions for Unity (EAFU)
 
-![Image Alt Text](\EAFU\Assets\EAFU\Utility\EAFUImage.PNG)
+![Image Alt Text](EAFU\Assets\EAFU\Utility\EAFUImage.PNG)
 
 ## About
 
