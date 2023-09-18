@@ -11,8 +11,11 @@ public static class LocalSettings
 
     static LocalSettings()
     {
-        jsonPath = editorFilePath;
-        LoadSettings();
+        if (Application.isEditor)
+        {
+            jsonPath = editorFilePath;
+            LoadSettings();
+        }
     }
 
     static void LoadSettings()
