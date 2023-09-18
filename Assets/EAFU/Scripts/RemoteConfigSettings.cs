@@ -46,9 +46,6 @@ public class RemoteConfigSettings : MonoBehaviour
             await InitializeRemoteConfigAsync();
         }
         
-        // Set Dev Env
-        RemoteConfigService.Instance.SetEnvironmentID("dc2cf220-cad9-40cc-8b9c-9af0e176cc17");
-        
         RemoteConfigService.Instance.FetchCompleted += ApplyRemoteSettings;
         RemoteConfigService.Instance.FetchConfigs(new userAttributes(), new appAttributes());
     }
