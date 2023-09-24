@@ -27,10 +27,10 @@ public class RemoteConfigSettings : MonoBehaviour
 
     async Task InitializeRemoteConfigAsync()
     {
-        // initialize handlers for unity game services
+        // Initialize handlers for unity game services
         await UnityServices.InitializeAsync();
 
-        // remote config requires authentication for managing environment information
+        // Remote Config requires authentication for managing environment information
         if (!AuthenticationService.Instance.IsSignedIn)
         {
             await AuthenticationService.Instance.SignInAnonymouslyAsync();
@@ -39,7 +39,7 @@ public class RemoteConfigSettings : MonoBehaviour
 
     async Task Start()
     {
-        // initialize Unity's authentication and core services, however check for internet connection
+        // Initialize Unity's authentication and core services, however check for internet connection
         // in order to fail gracefully without throwing exception if connection does not exist
         if (Utilities.CheckForInternetConnection())
         {

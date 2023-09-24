@@ -66,6 +66,8 @@ public class GameApi : EAFUApi
 
 For a step by step guide on creating and publishing your first Azure Function, please refer to the official Microsoft Azure documentation [here](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp).
 
+EAFU Example Package has sample functions to help you get started (`\Example\AzureFunctions`)
+
 ---
 
 Please note that this is a high-level guide, and it's recommended to be familiar with Azure Functions and Unity development. Enjoy using EAFU!
