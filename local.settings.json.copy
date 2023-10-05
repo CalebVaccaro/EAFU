@@ -1,0 +1,4 @@
+{
+    "AZURE_FUNCTION_APP_URL" : "Add-Your-Azure-Functions-URL",
+    "AZURE_FUNCTION_APP_KEY" : "Add-Your-Azure-Functions-KEY"
+}

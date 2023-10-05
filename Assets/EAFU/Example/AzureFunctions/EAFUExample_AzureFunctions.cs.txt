@@ -18,9 +18,10 @@ namespace AzureFunctions
     public static class EAFU
     {
         static string connectionString = Environment.GetEnvironmentVariable("STORAGE_ACCOUNT_CONNECTION_STRING");
-        static string table = Environment.GetEnvironmentVariable("STORAGE_ACCOUNT_PLAYER_TABLE");
+        static string table = Environment.GetEnvironmentVariable("STORAGE_ACCOUNT_TABLE");
+        
     [FunctionName("PostPlayer")]
-        public static async Task<IActionResult> Post([HttpTrigger(AuthorizationLevel.Admin, "post", Route = "player")] 
+        public static async Task<IActionResult> Post([HttpTrigger(AuthorizationLevel.Function, "post", Route = "player")] 
             HttpRequest req, ILogger log)
         {
             // Parse the request body to player object
@@ -44,7 +45,7 @@ namespace AzureFunctions
 
         // This function will be called with a specific leaderboardCount
         [FunctionName("GetLeaderboardWithCount")]
-        public static async Task<IActionResult> GetWithCount([HttpTrigger(AuthorizationLevel.Admin, "get", Route = "leaderboard/{leaderboardCount}")]
+        public static async Task<IActionResult> GetWithCount([HttpTrigger(AuthorizationLevel.Function, "get", Route = "leaderboard/{leaderboardCount}")]
             HttpRequest req, int leaderboardCount, ILogger log)
         {
             return await GetLeaderboardInternal(req, leaderboardCount, log);
@@ -52,7 +53,7 @@ namespace AzureFunctions
 
         // This function will be called without a leaderboardCount and use a default value
         [FunctionName("GetLeaderboard")]
-        public static async Task<IActionResult> GetWithoutCount([HttpTrigger(AuthorizationLevel.Admin, "get", Route = "leaderboard/")]
+        public static async Task<IActionResult> GetWithoutCount([HttpTrigger(AuthorizationLevel.Function, "get", Route = "leaderboard/")]
             HttpRequest req, ILogger log)
         {
             int defaultLeaderboardCount = 10; // You can set this to any default value you want

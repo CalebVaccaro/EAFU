@@ -9,6 +9,9 @@ namespace EAFU
     public sealed class ApiService
     {
         // EAFU: Use AzureService.cs or Environment Variable to set baseURL
+        // EAFU: Use AzureService.cs or Environment Variable to set baseURL
+        private static string baseURL = LocalSettings.variables["AZURE_FUNCTION_APP_URL"];
+        private static string functionKey = LocalSettings.variables["AZURE_FUNCTION_APP_KEY"];
         public static Action<string> onError;
         public static Action isLoading;
         public static Action isCompleted;
@@ -27,9 +30,9 @@ namespace EAFU
 
         private static async Task GetRequest<T>(string url, Action<T> callback)
         {
-            string fullUrl = RemoteConfigSettings.Instance.URL + url;
+            string fullUrl = baseURL + url;
             using UnityWebRequest www = UnityWebRequest.Get(fullUrl);
-            www.SetRequestHeader("x-functions-key", RemoteConfigSettings.Instance.Key);
+            www.SetRequestHeader("x-functions-key", functionKey);
             www.SendWebRequest();
             isLoading?.Invoke();
 
@@ -53,14 +56,14 @@ namespace EAFU
 
         private static async Task PostRequest<T>(string url, object body, Action<T> callback)
         {
-            string fullUrl = RemoteConfigSettings.Instance.URL + url;
+            string fullUrl = baseURL + url;
             string bodyJson = JsonConvert.SerializeObject(body);
             byte[] bodyRaw = new UTF8Encoding().GetBytes(bodyJson);
             var www = new UnityWebRequest(fullUrl, "POST");
             www.uploadHandler = new UploadHandlerRaw(bodyRaw);
             www.downloadHandler = new DownloadHandlerBuffer();
             www.SetRequestHeader("Content-Type", "application/json");
-            www.SetRequestHeader("x-functions-key", RemoteConfigSettings.Instance.Key);
+            www.SetRequestHeader("x-functions-key", functionKey);
             www.SendWebRequest();
             isLoading?.Invoke();
 
@@ -85,14 +88,14 @@ namespace EAFU
 
         private static async Task PutRequest<T>(string url, object body, Action<T> callback)
         {
-            string fullUrl = RemoteConfigSettings.Instance.URL + url;
+            string fullUrl = baseURL + url;
             string bodyJson = JsonConvert.SerializeObject(body);
             byte[] bodyRaw = new UTF8Encoding().GetBytes(bodyJson);
             var www = new UnityWebRequest(fullUrl, "PUT");
             www.uploadHandler = new UploadHandlerRaw(bodyRaw);
             www.downloadHandler = new DownloadHandlerBuffer();
             www.SetRequestHeader("Content-Type", "application/json");
-            www.SetRequestHeader("x-functions-key", RemoteConfigSettings.Instance.Key);
+            www.SetRequestHeader("x-functions-key", functionKey);
             www.SendWebRequest();
             isLoading?.Invoke();
 
@@ -117,9 +120,9 @@ namespace EAFU
 
         private static async Task DeleteRequest(string url, Action<object> callback)
         {
-            string fullUrl = RemoteConfigSettings.Instance.URL + url;
+            string fullUrl = baseURL + url;
             using UnityWebRequest www = UnityWebRequest.Delete(fullUrl);
-            www.SetRequestHeader("x-functions-key", RemoteConfigSettings.Instance.Key);
+            www.SetRequestHeader("x-functions-key", functionKey);
             www.SendWebRequest();
             isLoading?.Invoke();
 
