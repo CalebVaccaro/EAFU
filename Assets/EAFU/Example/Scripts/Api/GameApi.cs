@@ -14,7 +14,7 @@ public class GameApi : EAFUApi
     }
     public void GetLeaderboard(Action<List<Player>> GetLeaderboardsAction) => Get(GetLeaderboardsAction);
     public void GetLeaderboard(int leaderboardCount, Action<List<Player>> GetLeaderboardsAction) =>
-        ApiService.Get($"{endpoints.Get}"+$"/{leaderboardCount}", GetLeaderboardsAction);
+        ApiService.Get($"{endpoints.Get}/{leaderboardCount}", GetLeaderboardsAction);
 }
 
 [Serializable] 

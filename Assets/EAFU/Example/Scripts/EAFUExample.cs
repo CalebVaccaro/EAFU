@@ -90,7 +90,7 @@ public class EAFUExample : MonoBehaviour
             pulse.DisablePulseVFX();
 
             // EAFU: Create Player and Get Leaderboards from CreatePlayer Action
-            gameApi.CreatePlayer(playerName, score, gameDuration, o => 
+            gameApi.CreatePlayer(playerName, score, gameDuration, actionResponse => 
                 gameApi.GetLeaderboard(SetLeaderboard));
         }
 

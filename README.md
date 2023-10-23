@@ -24,21 +24,26 @@ EAFU consists of the following main components:
 1. First, set up your Azure Functions (see [Azure Functions documentation](https://docs.microsoft.com/en-us/azure/azure-functions/) for guidance).
 
 2. Setup Azure URL/KEY Configuration
-    - 2A. **Production Development Configuration** 
-        - Use Unity Remote Config for production deployments. This service allows you to update your application's configuration without needing to deploy a new version. 
-        - See the provided `RemoteConfigSettings` script to understand how to set up and use Unity Remote Config in your application. With this, you can fetch configuration details like the Azure Function App's URL and Key, ensuring your production configuration is always up to date.
-        - See [Unity Remote Config](https://docs.unity3d.com/Packages/com.unity.remote-config@3.3/manual/index.html) for more information.
-
-    - 2B. **Local Development Configuration - Non Unity Services Method (Not For Production!)** 
-        - Create a `local.settings.json` file outside of Assets folder. This file includes AZURE_FUNCTION_APP_URL and AZURE_FUNCTION_APP_KEY.
+    
+    - 2A. **Local Development Configuration - (Not For Production!)** 
+        - Create a `.env` file outside of Assets folder. This file includes AZURE_FUNCTION_APP_URL and AZURE_FUNCTION_APP_KEY.
         - Add your Azure Function Specific credentials
         - The format should be:
             ```json
-            {
-                "AZURE_FUNCTION_APP_URL" : "Add-Your-Azure-Functions-URL",
-                "AZURE_FUNCTION_APP_KEY" : "Add-Your-Azure-Functions-KEY"
-            }
+            AZURE_FUNCTION_APP_URL="Add-Your-Azure-Functions-URL"
+            AZURE_FUNCTION_APP_KEY="Add-Your-Azure-Functions-KEY"
             ```
+    - 2B. **Production Development Configuration** 
+        - For production deployments, configure your application to use Azure API Management as a reverse proxy to your Azure Functions.
+        - Store and manage your Azure API Management URL and subscription key in a secure and manageable way, such as using Azure Key Vault or another secure configuration management service.
+        - Update the `ApiService.BaseUrl` in your Unity project to point to the Azure API Management endpoint and ensure all API calls are routed through Azure API Management for enhanced security and management.
+        - For more detailed guidance on setting up and using Azure API Management, see [Azure API Management documentation](https://docs.microsoft.com/en-us/azure/api-management/).
+        - The format should be:
+            ```json
+            AZURE_API_PROXY_URL="Add-Your-Azure-API-Proxy-URL"
+            AZURE_API_SUBSCRIPTION_KEY="Add-Your-Azure-API-Subscription-KEY"
+            ```
+
 3. Implement your custom APIs inheriting from `EAFUApi` class and specify your Azure Function endpoints in the `ApiEndpoints` object. The `ApiEndpoints` object holds the URIs for each CRUD operation (GET, POST, PUT, DELETE) for a specific API.
 
 4. Initialize `ApiService.BaseUrl` to your Azure Function App's base URL.
