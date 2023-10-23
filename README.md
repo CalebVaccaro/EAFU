@@ -29,7 +29,7 @@ EAFU consists of the following main components:
         - Create a `.env` file outside of Assets folder. This file includes AZURE_FUNCTION_APP_URL and AZURE_FUNCTION_APP_KEY.
         - Add your Azure Function Specific credentials
         - The format should be:
-            ```json
+            ```
             AZURE_FUNCTION_APP_URL="Add-Your-Azure-Functions-URL"
             AZURE_FUNCTION_APP_KEY="Add-Your-Azure-Functions-KEY"
             ```
@@ -39,7 +39,7 @@ EAFU consists of the following main components:
         - Update the `ApiService.BaseUrl` in your Unity project to point to the Azure API Management endpoint and ensure all API calls are routed through Azure API Management for enhanced security and management.
         - For more detailed guidance on setting up and using Azure API Management, see [Azure API Management documentation](https://docs.microsoft.com/en-us/azure/api-management/).
         - The format should be:
-            ```json
+            ```
             AZURE_API_PROXY_URL="Add-Your-Azure-API-Proxy-URL"
             AZURE_API_SUBSCRIPTION_KEY="Add-Your-Azure-API-Subscription-KEY"
             ```
