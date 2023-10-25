@@ -3,15 +3,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using UnityEngine.Networking;
-using dotenv.net;
 
 namespace EAFU
 {
     public sealed class ApiService
     {
         // EAFU: Use AzureService.cs or Environment Variable to set baseURL
-        private static string baseURL = DotEnv.Read()["AZURE_FUNCTION_APP_URL"];
-        private static string functionKey = DotEnv.Read()["AZURE_FUNCTION_APP_KEY"];
+        private static string baseURL = Environment.GetEnvironmentVariable("AZURE_FUNCTION_APP_URL");
+        private static string functionKey = Environment.GetEnvironmentVariable("AZURE_FUNCTION_APP_KEY");
         public static Action<string> onError;
         public static Action isLoading;
         public static Action isCompleted;

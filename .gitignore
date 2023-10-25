@@ -74,3 +74,4 @@ crashlytics-build.properties
 # EAFU Conifguration
 local.settings.json
 .env
+appsettings.json
