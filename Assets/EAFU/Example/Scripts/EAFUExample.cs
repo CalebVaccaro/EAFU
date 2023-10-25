@@ -134,21 +134,16 @@ public class EAFUExample : MonoBehaviour
 
         for (int i = 0; i < leaderboard.Count; i++)
         {
-            if (i < leaderboardPositions.Count)
-            {
-                // Set Leaderboard Data to Leaderboard UI
-                var leaderboardPosition = leaderboard[i];
-                leaderboardPositions[i].text = $"{i + 1}. "
-                                               + $"{leaderboardPosition.Name}"
-                                               + $":{leaderboardPosition.Score}";
+            // Set Leaderboard Data to Leaderboard UI
+            var leaderboardPosition = leaderboard[i];
+            leaderboardPositions[i].text = $"{i + 1}. {leaderboardPosition.Name} : {leaderboardPosition.Score}";
 
-                // Check if the player is in the leaderboard for each position
-                if (leaderboardPosition.Id == gameApi.player.Id)
-                {
-                    leaderboardPositions[i].color = changeColor.Color;
-                    changeColor.ChangeCubeColor();
-                    pulse.EnablePulseVFX();
-                }
+            // Check if the player is in the leaderboard for each position
+            if (leaderboardPosition.Id == gameApi.player.Id)
+            {
+                leaderboardPositions[i].color = changeColor.Color;
+                changeColor.ChangeCubeColor();
+                pulse.EnablePulseVFX();
             }
         }
 
