@@ -26,7 +26,7 @@ EAFU consists of the following main components:
 2. Setup Azure URL/KEY Configuration
     
     - 2A. **Local Development Configuration - (Not For Production!)** 
-        - Create a `appsettings.json` file outside of Assets folder. This file includes AZURE_FUNCTION_APP_URL and AZURE_FUNCTION_APP_KEY. (`copy-appsettings.json` included as a template)
+        - Create a `local.settings.json` file outside of Assets folder. This file includes AZURE_FUNCTION_APP_URL and AZURE_FUNCTION_APP_KEY. (`copy-local.settings.json` included as a template)
         - Add your Azure Function App credentials
         - The format should be:
             ```json
@@ -66,9 +66,9 @@ public class GameApi : EAFUApi
 
 ## Creating Azure Functions
 
-For a step by step guide on creating and publishing your first Azure Function, please refer to the official Microsoft Azure documentation [here](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp).
+Check out [EAFU-AzureFunctions](https://github.com/CalebVaccaro/eafu-azurefunctions) to dive deep into the backend services for the example project.
 
-EAFU Example Package has sample functions to help you get started (`\Example\AzureFunctions`)
+For a step by step guide on creating and publishing your first Azure Function, please refer to the official Microsoft Azure documentation [here](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-vs-code-csharp).
 
 ---
 
