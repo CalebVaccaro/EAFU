@@ -26,19 +26,12 @@ EAFU consists of the following main components:
 2. Setup Azure URL/KEY Configuration
     
     - 2A. **Local Development Configuration - (Not For Production!)** 
-        - Create a `local.settings.json` file outside of Assets folder. This file includes AZURE_FUNCTION_APP_URL and AZURE_FUNCTION_APP_KEY. (`copy-local.settings.json` included as a template)
-        - Add your Azure Function App credentials
-        - The format should be:
-            ```json
-            {
-                "AZURE_FUNCTION_APP_URL":"Add-Your-Azure-Functions-URL",
-                "AZURE_FUNCTION_APP_KEY":"Add-Your-Azure-Functions-KEY"
-            }
-            ```
+        - Set environment variables on your local development machine. These environment variables should include `AZURE_FUNCTION_APP_URL` and `AZURE_FUNCTION_APP_KEY`. 
+        - You can set these environment variables using your preferred method for your development environment.
     - 2B. **Production Development Configuration** 
         - For production deployments, configure your application to use Azure API Management as a reverse proxy to your Azure Functions.
         - Store and manage your Azure API Management URL and subscription key in a secure and manageable way, such as using Azure Key Vault or another secure configuration management service.
-        - Update the `ApiService.BaseUrl` in your Unity project to point to the Azure API Management endpoint and ensure all API calls are routed through Azure API Management for enhanced security and management.
+        - Update the `ApiService.BaseUrl` and `ApiService.functionKey` in your Unity project to point to the Azure API Management endpoint and ensure all API calls are routed through Azure API Management for enhanced security and management.
         - For more detailed guidance on setting up and using Azure API Management, see [Azure API Management documentation](https://docs.microsoft.com/en-us/azure/api-management/).
 
 3. Implement your custom APIs inheriting from `EAFUApi` class and specify your Azure Function endpoints in the `ApiEndpoints` object. The `ApiEndpoints` object holds the URIs for each CRUD operation (GET, POST, PUT, DELETE) for a specific API.
